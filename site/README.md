@@ -18,6 +18,9 @@
 6. Instalar o ReactStrap
 ### npm install --save reactstrap react react-dom
 
+7. Instalar a biblioteca de ícones
+### npm i --save @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
+
 
 ## COMO RODAR O PROJETO BAIXADO
 
