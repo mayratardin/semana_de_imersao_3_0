@@ -8,7 +8,8 @@ import { fas } from '@fortawesome/free-solid-svg-icons'; //importando todos os �
 
 library.add(fas);
 
-function Home() {
+//recebe os dados da constante(data) como objeto
+function Home({ data }) {
     return (
         //todo conteúdo deve estar dentro de uma tag
         <> 
@@ -31,11 +32,11 @@ function Home() {
                     }`}
                 </style>
                 <Container className="text-center"> {/* usado para alinhar o conteúdo independente do tamanho da tela, e essa classe para centralizar */}
-                    <h1 className="display-4">Título</h1> {/* usando a classe para estilizar a fonte */}
-                    <p className="lead">Subtítulo</p> {/* usando outra classe para estilizar a fonte */}
+                    <h1 className="display-4">{ data.home.topTitulo }</h1> {/* usando a classe para estilizar a fonte */}
+                    <p className="lead">{ data.home.topSubtitulo }</p> {/* usando outra classe para estilizar a fonte */}
                     <p>
-                        <a href="#" className="btn btn-outline-warning btn-lg"> {/* usando a classe para aplicar e estilizar o botão */}
-                            Texto
+                        <a href={ data.home.topLinkBtn } className="btn btn-outline-warning btn-lg"> {/* usando a classe para aplicar e estilizar o botão */}
+                            { data.home.topTextoBtn }
                         </a>
                     </p>
                 </Container>
@@ -62,32 +63,32 @@ function Home() {
                 </style>
                 <Container className="text-center">
                     <div>
-                        <h2 className="display-4">Título</h2>
-                        <p className="lead pb-4">Subtítulo</p>
+                        <h2 className="display-4">{ data.home.serTitulo }</h2>
+                        <p className="lead pb-4">{ data.home.serSubtitulo }</p>
                     </div>
                     <div className="row">
                         <div className="col-md-4"> {/* para que a partir de dispositivos com telas média divida em 4 grids */}
                             <div className="rounded-circle circulo centralizar">
-                                <FontAwesomeIcon icon={["fas", "code"]} />
+                                <FontAwesomeIcon icon={ data.home.serUmIcone } />
                             </div>
-                            <h2 className="mt-4 mb-4">Serviço I</h2>
-                            <p>Descrição</p>
+                            <h2 className="mt-4 mb-4">{ data.home.serUmTitulo }</h2>
+                            <p>{ data.home.serUmDesc }</p>
                         </div>
 
                         <div className="col-md-4">
                             <div className="rounded-circle circulo centralizar">
-                                <FontAwesomeIcon icon={["fas", "laptop-code"]} />
+                                <FontAwesomeIcon icon={ data.home.serDoisIcone } />
                             </div>
-                            <h2 className="mt-4 mb-4">Serviço II</h2>
-                            <p>Descrição</p>
+                            <h2 className="mt-4 mb-4">{ data.home.serDoisTitulo }</h2>
+                            <p>{ data.home.serDoisDesc }</p>
                         </div>
 
                         <div className="col-md-4">
                             <div className="rounded-circle circulo centralizar">
-                                <FontAwesomeIcon icon={["fas", "mobile-alt"]} />
+                                <FontAwesomeIcon icon={ data.home.serTresIcone } />
                             </div>
-                            <h2 className="mt-4 mb-4">Serviço III</h2>
-                            <p>Descrição</p>
+                            <h2 className="mt-4 mb-4">{ data.home.serTresTitulo }</h2>
+                            <p>{ data.home.serTresDesc }</p>
                         </div>
                     </div>
                 </Container>
@@ -97,4 +98,9 @@ function Home() {
     );
   };
   
+  export async function getServerSideProps(){
+      const response = await fetch(`http://localhost:8080/home`); //fazendo a requisição na api, aguarda o processamento, depois pega os dados e atribui a constante
+      const data = await response.json(); //utiliza o json para ler os dados, aguarda o processamento, atribui para a constante
+      return {props: { data }} //retorna os dados para utilizar no site
+  }
   export default Home;

@@ -25,6 +25,15 @@
 ### mongorestore --db imersao(nome do bd) c:\data\db\imersao(caminho de onde está salvo)
 
 
+## COMO RODAR O PROJETO BAIXADO
+
+1. Instalar todas as dependências indicada pelo package.json
+### npm install
+
+2. Rodar o projeto usando o nodemon
+### nodemon app.js
+
+
 ### Explicações:
 - --save para que acrescente no package.json
 - package-lock.json: possui um resumo de todas as dependências que o projeto possui(um cache), ele identifica as dependências que já estão instaladas no projeto
