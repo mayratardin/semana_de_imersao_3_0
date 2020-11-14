@@ -1,6 +1,7 @@
 import Head from 'next/head'; //importando o cabeçalho
 import Menu from '../components/Menu'; //importando o Menu para usar como componente
-import { Container, Jumbotron } from 'reactstrap'; //importando o componente
+import Rodape from '../components/Rodape'; //importando o componente Rodape
+import { Button, Container, Form, FormGroup, Input, Jumbotron, Label } from 'reactstrap'; //importando o componente
 
 function Home() {
     return (
@@ -28,6 +29,44 @@ function Home() {
                     <h1 className="display-4">Contato</h1> {/* usando a classe para estilizar a fonte */}
                 </Container>
             </Jumbotron>
+
+            <Jumbotron fluid className="form-contato">
+                <style>
+                    {`.form-contato{
+                        padding-top: 80px;
+                        padding-bottom: 80px;
+                        background-color: #fff;
+                        margin-bottom: 0rem !important;
+                    }`}
+                </style>
+                <Container>
+                    <Form>
+                        <FormGroup>
+                            <Label for="name">Nome:</Label>
+                            <Input type="text" name="name" id="name" placeholder="Nome completo" />
+                        </FormGroup>
+
+                        <FormGroup>
+                            <Label for="email">E-mail:</Label>
+                            <Input type="email" name="email" id="email" placeholder="Melhor e-mail" />
+                        </FormGroup>
+
+                        <FormGroup>
+                            <Label for="subject">Assunto:</Label>
+                            <Input type="text" name="subject" id="subject" placeholder="Assunto da mensagem" />
+                        </FormGroup>
+
+                        <FormGroup>
+                            <Label for="content">Conteúdo:</Label>
+                            <Input type="textarea" name="content" id="content" placeholder="Conteúdo da mensagem" />
+                        </FormGroup>
+
+                        <Button type="submit" outline color="warning">Enviar</Button>
+                    </Form>
+                </Container>
+            </Jumbotron>
+            
+            <Rodape></Rodape>
         </>
     );
   };
